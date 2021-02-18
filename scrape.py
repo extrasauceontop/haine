@@ -49,7 +49,7 @@ def fetch_data():
 
     with webdriver.Chrome(chrome_options=options) as driver:
         params = {"latitude": 50.1109, "longitude": 8.6821, "accuracy": 100}
-        driver.execute_cdp_cmd("Page.setGeolocationOverride", params)
+        driver.execute_cdp_cmd("Page.setGeolocationOverride", params, headless=True)
 
         driver.get(start_url)
         dom = etree.HTML(driver.page_source)
