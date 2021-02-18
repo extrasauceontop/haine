@@ -43,13 +43,13 @@ def fetch_data():
     start_url = "https://www.haineandsmith.co.uk/practice-finder"
 
     all_locations = []
-    options = webdriver.chrome.options.Options()
+    options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
 
     with webdriver.Chrome(chrome_options=options) as driver:
         params = {"latitude": 50.1109, "longitude": 8.6821, "accuracy": 100}
-        driver.execute_cdp_cmd("Page.setGeolocationOverride", params, headless=True)
+        driver.execute_cdp_cmd("Page.setGeolocationOverride", params)
 
         driver.get(start_url)
         dom = etree.HTML(driver.page_source)
