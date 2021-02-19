@@ -1,7 +1,7 @@
 import csv
 from lxml import etree
 
-from sgselenium.sgselenium import webdriver
+from sgselenium.sgselenium import webdriver, SgChrome
 
 
 def write_output(data):
@@ -47,7 +47,7 @@ def fetch_data():
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
 
-    with webdriver.Chrome(chrome_options=options) as driver:
+    with SgChrome().driver() as driver:
         params = {"latitude": 50.1109, "longitude": 8.6821, "accuracy": 100}
         driver.execute_cdp_cmd("Page.setGeolocationOverride", params)
 
